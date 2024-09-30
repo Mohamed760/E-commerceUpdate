@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        @for (item of productList() ; track $index) {
+    
+            <div class="col-lg-2 col-md-3 py-3 product p-2">
+                <div [routerLink]="['/productdetails', item._id]" >
+                    <img [src]="item.imageCover" class="img-fluid" alt="">
+                    <span class="text-main font-sm">{{item.category.name}}</span>
+                    <h3 class="my-3 h5 fw-bold">{{item.title.split(" ").splice(0,2).join(" ")}}</h3>
+    
+                    <div class="d-flex justify-content-between">
+                        <span>{{item.price}} EGP</span>
+                        <span>{{item.ratingsAverage}} <i class="fa fa-star rating-color"></i></span>
+                    </div>
+                </div>
+    
+                <button (click)="addProductToCart(item._id)" class="btn bg-main w-100 text-white">Add to Cart</button>
+    
+            </div>
+        }
+    
+    </div>
+</div>
+
+<div class="b-pagination-outer mt-5 mb-2">
+
+    <ul id="border-pagination">
+      <li><a (click)="goToPage(currentPage - 1)" >«</a></li>
+      <li><a  class="active">{{currentPage}}</a></li>
+      <li><a (click)="goToPage(currentPage + 1)"  >»</a></li>
+      <li><a  class="active">NumberOfPages {{numberOfPages}} </a></li>
+    </ul> 
+    </div>
+    
